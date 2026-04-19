@@ -32,8 +32,8 @@ const Home = () => {
             transition={{ delay: 0.2 }}
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-8 leading-tight"
           >
-            분당인테리어의 경험이 만드는 차이,<br />
-            공간의 가치를 더하다
+            분당인테리어 추천 전문,<br />
+            호텔식 판교 아파트 리모델링 MID 디자인
           </motion.h1>
           
           <motion.p 
