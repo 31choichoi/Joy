@@ -30,10 +30,13 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-8 leading-tight"
+            className="flex flex-col mb-8 gap-2"
           >
-            분당인테리어 추천 전문,<br />
-            호텔식 판교 아파트 리모델링 MID 디자인
+            <span className="text-sm md:text-base font-light text-white/60 tracking-wider">분당인테리어 잘하는곳</span>
+            <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-medium leading-[1.3] md:leading-tight">
+              호텔식 판교 아파트 리모델링<br />
+              27년 경력 전문가의 디테일! 마감!
+            </span>
           </motion.h1>
           
           <motion.p 
