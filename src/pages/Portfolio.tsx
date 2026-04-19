@@ -37,20 +37,20 @@ const Portfolio = () => {
 
       {/* Filters */}
       <section className="px-6 md:px-12 mb-12">
-        <div className="max-w-7xl mx-auto flex justify-center border-y border-slate-100 py-10">
-          <div className="flex flex-wrap items-center justify-center gap-0">
-            {categories.map((cat) => (
+        <div className="max-w-7xl mx-auto flex justify-center border-y border-slate-100 py-6 md:py-10">
+          <div className="grid grid-cols-2 md:flex items-center justify-center gap-0 w-full md:w-auto">
+            {categories.map((cat, index) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={cn(
-                  "px-8 md:px-12 py-4 text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold transition-all duration-300 relative border border-slate-200 -ml-[1px]",
+                  "px-4 md:px-12 py-4 text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold transition-all duration-300 relative border border-slate-200 -ml-[1px] -mt-[1px] md:mt-0",
                   filter === cat 
                     ? "bg-brand-navy text-white border-brand-navy z-10" 
                     : "bg-white text-slate-400 hover:text-brand-gold hover:bg-slate-50"
                 )}
               >
-                <span className="relative z-10">
+                <span className="relative z-10 whitespace-nowrap">
                   {categoryMap[cat]}
                 </span>
                 
@@ -152,7 +152,12 @@ const Portfolio = () => {
             <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-gold/10 transition-colors duration-700" />
             <div className="relative z-10 max-w-2xl text-center md:text-left">
               <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">Our Stories</span>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">더 많은 시공 사례와 리모델링 팁을 <br className="hidden md:block" /> 공식 블로그에서 확인하세요.</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 leading-tight">
+                더 많은 시공 사례와 <br />
+                리모델링 팁을 <br />
+                공식 블로그에서 <br />
+                확인하세요.
+              </h2>
               <p className="text-slate-500 font-light text-base md:text-lg mb-0 leading-relaxed">
                 공간의 변화를 만드는 생생한 현장 이야기부터 인테리어 가이드까지, <br className="hidden md:block" />
                 MID 디자인 스튜디오 블로그에 기록하고 있습니다.
@@ -162,7 +167,7 @@ const Portfolio = () => {
               href="https://blog.naver.com/mid_designstudio"
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-10 px-12 py-6 bg-slate-900 text-white text-xs uppercase tracking-[0.2em] font-bold hover:bg-brand-gold transition-all shadow-2xl flex items-center group/btn"
+              className="relative z-10 px-12 py-6 bg-orange-600 text-white text-xs uppercase tracking-[0.2em] font-bold hover:bg-orange-500 transition-all shadow-2xl flex items-center group/btn"
             >
               Visit Blog <ExternalLink size={16} className="ml-3 group-hover/btn:translate-x-1 transition-transform" />
             </a>
