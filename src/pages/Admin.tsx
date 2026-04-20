@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { auth, db } from '../lib/firebase';
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, User } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithRedirect, signOut, onAuthStateChanged, User, getRedirectResult } from 'firebase/auth';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { Booking, BookingStatus } from '../types';
 import { LogIn, LogOut, Download, PieChart as PieIcon, List, CheckCircle, Clock as ClockIcon, TrendingUp, MapPin } from 'lucide-react';
@@ -20,6 +20,11 @@ const Admin = () => {
   const ADMIN_EMAIL = '31choichoi@gmail.com'; 
 
   useEffect(() => {
+    // Check redirect result on mount to handle the login flow
+    getRedirectResult(auth).catch((error) => {
+      console.error("Auth redirect error:", error);
+    });
+
     const unsubAuth = onAuthStateChanged(auth, (u) => {
       setUser(u);
       if (u && u.email === ADMIN_EMAIL) {
@@ -45,8 +50,9 @@ const Admin = () => {
 
   const handleLogin = async () => {
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
     try {
-      await signInWithPopup(auth, provider);
+      await signInWithRedirect(auth, provider);
     } catch (err) {
       console.error(err);
     }
