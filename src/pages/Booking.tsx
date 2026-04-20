@@ -168,7 +168,7 @@ const Booking = () => {
               className="group relative flex items-center space-x-3 bg-[#e52528] text-white px-10 py-5 rounded-full font-bold text-lg shadow-[0_10px_30px_rgba(229,37,40,0.4)] hover:shadow-[0_15px_40px_rgba(229,37,40,0.5)] transition-all duration-300"
             >
               <span className="w-8 h-8 bg-white text-[#e52528] rounded-full flex items-center justify-center font-black text-xs group-hover:rotate-12 transition-transform">N</span>
-              <span>네이버로 빠른 예약하기</span>
+              <span>네이버로 빠른 예약</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
