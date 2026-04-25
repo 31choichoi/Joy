@@ -20,6 +20,7 @@ const Navbar = () => {
     { name: 'About', path: '/about' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Booking', path: '/booking' },
+    { name: 'Blog', path: 'https://blog.naver.com/mid_designstudio', isExternal: true },
   ];
 
   const isHome = location.pathname === '/';
@@ -45,17 +46,32 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-12">
           {navItems.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) => cn(
-                "text-xs uppercase tracking-widest font-semibold transition-all hover:text-brand-gold",
-                isNavDark ? "text-slate-600" : "text-white/90",
-                isActive && "text-brand-gold"
-              )}
-            >
-              {item.name}
-            </NavLink>
+            item.isExternal ? (
+              <a
+                key={item.path}
+                href={item.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "text-xs uppercase tracking-widest font-semibold transition-all hover:text-brand-gold",
+                  isNavDark ? "text-slate-600" : "text-white/90"
+                )}
+              >
+                {item.name}
+              </a>
+            ) : (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) => cn(
+                  "text-xs uppercase tracking-widest font-semibold transition-all hover:text-brand-gold",
+                  isNavDark ? "text-slate-600" : "text-white/90",
+                  isActive && "text-brand-gold"
+                )}
+              >
+                {item.name}
+              </NavLink>
+            )
           ))}
           <Link 
             to="/booking" 
@@ -90,14 +106,27 @@ const Navbar = () => {
             className="absolute top-0 left-0 w-full h-screen bg-slate-900 flex flex-col justify-center items-center space-y-8 z-40"
           >
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => setIsOpen(false)}
-                className="text-2xl font-serif text-white hover:text-brand-gold"
-              >
-                {item.name}
-              </Link>
+              item.isExternal ? (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="text-2xl font-serif text-white hover:text-brand-gold"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className="text-2xl font-serif text-white hover:text-brand-gold"
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
             <Link 
               to="/booking"
@@ -142,6 +171,7 @@ const Footer = () => (
         <ul className="space-y-4 text-sm font-light text-white/50">
           <li><Link to="/about" className="hover:text-brand-gold transition-colors">About MID</Link></li>
           <li><Link to="/portfolio" className="hover:text-brand-gold transition-colors">Portfolio</Link></li>
+          <li><a href="https://blog.naver.com/mid_designstudio" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">Blog (Naver)</a></li>
           <li><Link to="/booking" className="hover:text-brand-gold transition-colors">Consultation</Link></li>
           <li><Link to="/admin" className="hover:text-brand-gold transition-colors">Dashboard</Link></li>
         </ul>
