@@ -32,9 +32,9 @@ const Home = () => {
             transition={{ delay: 0.2 }}
             className="flex flex-col mb-8 gap-2"
           >
-            <span className="text-sm md:text-base font-light text-white/60 tracking-wider">분당인테리어 잘하는곳</span>
+            <span className="text-sm md:text-base font-light text-white/60 tracking-wider">분당인테리어 판교인테리어 잘하는곳</span>
             <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-medium leading-[1.3] md:leading-tight">
-              호텔식 판교 아파트 리모델링<br />
+              호텔식 리모델링 전문 MID인테리어<br />
               27년 경력 전문가의 디테일! 마감!
             </span>
           </motion.h1>
@@ -94,8 +94,8 @@ const Home = () => {
               },
               {
                 icon: <HomeIcon className="text-brand-gold mb-6" size={48} strokeWidth={1} />,
-                title: "하이엔드 맞춤 설계",
-                desc: "분당/판교 지역 아파트 및 상업 공간을 위한 프리미엄 자재와 감각적인 디테일."
+                title: "판교인테리어 맞춤 설계",
+                desc: "분당인테리어 및 판교인테리어 지역 아파트 및 상업 공간을 위한 프리미엄 자재와 감각적인 디테일."
               }
             ].map((item, i) => (
               <motion.div 
@@ -119,9 +119,9 @@ const Home = () => {
       <section className="py-32 px-6 md:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto mb-20 text-center">
           <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gold mb-4 block">Selection</span>
-          <h2 className="text-3xl md:text-6xl font-bold mb-6">분당인테리어 시공 사례</h2>
+          <h2 className="text-3xl md:text-6xl font-bold mb-6">분당인테리어 판교인테리어</h2>
           <p className="text-slate-400 font-light max-w-xl mx-auto">
-            판교 아파트 리모델링부터 하이엔드 상업 공간까지, MID인테리어의 철학이 담긴 대표 프로젝트를 확인하세요.
+            판교 아파트 리모델링부터 하이엔드 상업 공간까지, MID인테리어의 철학이 담긴 시공 사례를 확인하세요.
           </p>
         </div>
         
@@ -188,7 +188,7 @@ const Home = () => {
           
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div>
-              <h2 className="text-2xl md:text-5xl font-bold text-white mb-6 leading-tight whitespace-nowrap">분당인테리어 MID인테리어 상담</h2>
+              <h2 className="text-2xl md:text-5xl font-bold text-white mb-6 leading-tight whitespace-nowrap">분당·판교 인테리어 상담</h2>
               <p className="text-white/60 font-light max-w-md">
                 지금 바로 판교 아파트 리모델링 방문 상담을 예약하세요. <br />
                 27년 경력의 디렉터가 직접 공간의 해법을 제시합니다.
