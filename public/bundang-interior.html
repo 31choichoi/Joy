@@ -95,12 +95,17 @@
     }
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 22px; font-weight: 600;
+      font-size: 18px; font-weight: 600;
       color: var(--primary);
       text-decoration: none;
       letter-spacing: -0.5px;
+      white-space: nowrap;
     }
-    .logo span { color: var(--accent); }
+    .logo span { color: var(--accent); font-size: 0.9em; margin-left: 2px; }
+    @media (min-width: 640px) {
+      .logo { font-size: 22px; }
+      .logo span { font-size: 1em; }
+    }
     nav { display: flex; gap: 28px; }
     nav a {
       font-size: 14px; color: var(--text-muted);

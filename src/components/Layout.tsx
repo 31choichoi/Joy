@@ -35,11 +35,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-baseline gap-3">
           <span className={cn(
-            "text-4xl font-serif font-bold tracking-tighter transition-colors",
+            "text-3xl md:text-4xl font-serif font-bold tracking-tighter transition-colors",
             isNavDark ? "text-slate-900" : "text-white"
-          )}>MID인테리어</span>
+          )}>
+            MID<span className="text-xl md:text-4xl ml-1">인테리어</span>
+          </span>
           <span className={cn(
-            "text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold transition-colors",
+            "hidden sm:inline-block text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold transition-colors",
             isNavDark ? "text-slate-500" : "text-white/70"
           )}>Interior Design</span>
         </Link>
