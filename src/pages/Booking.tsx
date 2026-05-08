@@ -139,7 +139,7 @@ const Booking = () => {
           <h2 className="text-4xl font-bold mb-6">예약이 접수되었습니다.</h2>
           <p className="text-slate-500 font-light text-lg mb-12">
             담당자가 확인 후 24시간 이내에 연락드리겠습니다. <br/>
-            MID를 선택해주셔서 감사합니다.
+            MID인테리어를 선택해주셔서 감사합니다.
           </p>
           <button 
             onClick={() => window.location.href = '/'}
@@ -184,7 +184,7 @@ const Booking = () => {
           </div>
           <p className="text-slate-500 font-light text-lg leading-relaxed">
             전문 인테리어 디렉터와의 1:1 방문 상담을 예약하세요. <br className="hidden md:block" />
-            공간의 시작과 끝을 MID가 함께 고민합니다.
+            공간의 시작과 끝을 MID인테리어가 함께 고민합니다.
           </p>
         </div>
       </section>

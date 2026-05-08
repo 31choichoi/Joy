@@ -37,13 +37,13 @@ const About = () => {
             <p className="text-lg text-slate-600 font-light leading-relaxed mb-8">
               "인테리어는 단순히 보기 좋은 그림을 그리는 것이 아닙니다. 
               사용자의 생활 방식이 녹아들고, 시간이 흐를수록 가치가 증명되는 ‘견고한’ 공간을 만드는 것이 
-              MID가 27년 동안 걸어온 길입니다."
+              MID인테리어가 27년 동안 걸어온 길입니다."
             </p>
             <p className="text-slate-500 font-light leading-relaxed mb-12">
               우리는 트렌드를 쫓기보다 공간의 본질에 집중합니다. 
               화려한 마감재 이전에 기초가 튼튼한 공사를, 
               겉모습 이전에 효율적인 동선과 디테일한 수능 능력을 우선시합니다. 
-              이것이 지난 1999년부터 지금까지 수많은 고객들이 MID를 다시 찾는 이유입니다.
+              이것이 지난 1999년부터 지금까지 수많은 고객들이 MID인테리어를 다시 찾는 이유입니다.
             </p>
             
             <div className="grid grid-cols-2 gap-8 pt-8 border-t border-slate-100">

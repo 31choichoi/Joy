@@ -29,7 +29,7 @@ const Portfolio = () => {
           <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gold mb-6 block">Our Expertise</span>
           <h2 className="text-3xl md:text-7xl font-bold mb-8">Selected Projects</h2>
           <p className="text-slate-500 font-light text-base md:text-lg leading-relaxed">
-            MID는 공간의 목적과 사용자의 니즈를 깊게 이해하여 <br className="hidden md:block" />
+            MID인테리어는 공간의 목적과 사용자의 니즈를 깊게 이해하여 <br className="hidden md:block" />
             가장 완성도 높은 건축 및 인테리어 솔루션을 제공합니다.
           </p>
         </div>
@@ -122,7 +122,7 @@ const Portfolio = () => {
             <h2 className="text-2xl md:text-6xl font-bold mb-8 italic leading-tight">틈새라면 전국구 시공 능력</h2>
             <p className="text-white/60 font-light text-base md:text-lg leading-relaxed mb-12">
               단순한 인테리어를 넘어 브랜드의 아이덴티티를 전국적으로 복제하고 유지하는 매뉴얼화된 시스템. 
-              MID는 '틈새라면'의 역사를 공간으로 함께 써내려가고 있습니다.
+              MID인테리어는 '틈새라면'의 역사를 공간으로 함께 써내려가고 있습니다.
             </p>
             <div className="grid grid-cols-2 gap-8">
               <div>
@@ -161,7 +161,7 @@ const Portfolio = () => {
               </h2>
               <p className="text-slate-500 font-light text-base md:text-lg mb-0 leading-relaxed">
                 공간의 변화를 만드는 생생한 현장 이야기부터 인테리어 가이드까지, <br className="hidden md:block" />
-                MID 디자인 스튜디오 블로그에 기록하고 있습니다.
+                MID인테리어 블로그에 기록하고 있습니다.
               </p>
             </div>
             <a 

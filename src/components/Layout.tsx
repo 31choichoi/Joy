@@ -36,7 +36,7 @@ const Navbar = () => {
           <span className={cn(
             "text-4xl font-serif font-bold tracking-tighter transition-colors",
             isNavDark ? "text-slate-900" : "text-white"
-          )}>MID</span>
+          )}>MID인테리어</span>
           <span className={cn(
             "text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold transition-colors",
             isNavDark ? "text-slate-500" : "text-white/70"
@@ -150,7 +150,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
       <div className="col-span-1 md:col-span-1">
         <Link to="/" className="flex items-baseline gap-3 mb-6">
-          <span className="text-4xl font-serif font-bold tracking-tighter text-white">MID</span>
+          <span className="text-4xl font-serif font-bold tracking-tighter text-white">MID인테리어</span>
           <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold text-white/50">Interior Design</span>
         </Link>
         <p className="text-sm text-white/50 leading-relaxed font-light mb-6">
@@ -169,7 +169,7 @@ const Footer = () => (
       <div>
         <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-6">Quick Links</h4>
         <ul className="space-y-4 text-sm font-light text-white/50">
-          <li><Link to="/about" className="hover:text-brand-gold transition-colors">About MID</Link></li>
+          <li><Link to="/about" className="hover:text-brand-gold transition-colors">About MID인테리어</Link></li>
           <li><Link to="/portfolio" className="hover:text-brand-gold transition-colors">Portfolio</Link></li>
           <li><a href="https://blog.naver.com/mid_designstudio" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">Blog (Naver)</a></li>
           <li><Link to="/booking" className="hover:text-brand-gold transition-colors">Consultation</Link></li>
@@ -197,7 +197,7 @@ const Footer = () => (
     </div>
     
     <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/30">
-      <p>© 2024 MID Interior Design. All rights reserved.</p>
+      <p>© 2024 MID인테리어. All rights reserved.</p>
       <div className="flex space-x-8 mt-4 md:mt-0">
         <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
         <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

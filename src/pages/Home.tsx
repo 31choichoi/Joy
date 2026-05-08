@@ -47,7 +47,7 @@ const Home = () => {
           >
             분당·판교 하이엔드 주거 설계부터 <br />
             전국 프랜차이즈 시공까지, <br />
-            MID 디자인 스튜디오의 타협 없는 고집.
+            MID인테리어의 타협 없는 고집.
           </motion.p>
           
           <motion.div 
@@ -121,7 +121,7 @@ const Home = () => {
           <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gold mb-4 block">Selection</span>
           <h2 className="text-3xl md:text-6xl font-bold mb-6">분당인테리어 시공 사례</h2>
           <p className="text-slate-400 font-light max-w-xl mx-auto">
-            판교 아파트 리모델링부터 하이엔드 상업 공간까지, MID의 철학이 담긴 대표 프로젝트를 확인하세요.
+            판교 아파트 리모델링부터 하이엔드 상업 공간까지, MID인테리어의 철학이 담긴 대표 프로젝트를 확인하세요.
           </p>
         </div>
         
@@ -173,7 +173,7 @@ const Home = () => {
             "유행은 변해도 <br className="md:hidden" /> 기본은 변하지 않습니다."
           </blockquote>
           <p className="text-sm md:text-lg text-white/50 font-light max-w-2xl mx-auto leading-relaxed">
-            27년 동안 흔들림 없이 지켜온 MID의 약속은 <br />
+            27년 동안 흔들림 없이 지켜온 MID인테리어의 약속은 <br />
             단순히 화려한 디자인이 아닌, <br />
             보이지 않는 곳의 탄탄한 기초와 <br />
             철저한 사후 관리입니다.
@@ -188,7 +188,7 @@ const Home = () => {
           
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div>
-              <h2 className="text-2xl md:text-5xl font-bold text-white mb-6 leading-tight whitespace-nowrap">분당인테리어 상담하기</h2>
+              <h2 className="text-2xl md:text-5xl font-bold text-white mb-6 leading-tight whitespace-nowrap">분당인테리어 MID인테리어 상담</h2>
               <p className="text-white/60 font-light max-w-md">
                 지금 바로 판교 아파트 리모델링 방문 상담을 예약하세요. <br />
                 27년 경력의 디렉터가 직접 공간의 해법을 제시합니다.
