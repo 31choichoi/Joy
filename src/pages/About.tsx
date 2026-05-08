@@ -17,7 +17,7 @@ const About = () => {
           >
             <div className="relative inline-block mb-12">
                 <img 
-                  src="https://mydrim.net/img/midceo.png" 
+                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" 
                   className="w-full max-w-md aspect-[3/4] object-cover"
                   alt="MID White Minimalist Interior"
                   referrerPolicy="no-referrer"
