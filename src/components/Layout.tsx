@@ -156,6 +156,9 @@ const Footer = () => (
         <p className="text-sm text-white/50 leading-relaxed font-light mb-6">
           "경험이 만드는 차이, 공간의 가치를 더하는 27년의 기술력"
         </p>
+        <p className="text-[10px] text-white/30 uppercase tracking-widest mb-6">
+          사업자등록번호: 839-03-02275
+        </p>
         <div className="flex space-x-4">
           <a href="#" className="p-2 border border-white/10 rounded-full hover:bg-white/10 transition-colors">
             <Instagram size={18} />
@@ -182,7 +185,7 @@ const Footer = () => (
         <ul className="space-y-4 text-sm font-light text-white/50">
           <li className="flex items-start space-x-3">
             <MapPin size={16} className="mt-1 flex-shrink-0" />
-            <span>경기도 성남시 분당구 수내동 <br/> 내정로 173번길 11</span>
+            <span>경기도 성남시 분당구 <br/> 내정로 173번길 11 대명제스트 1층</span>
           </li>
           <li className="flex items-center space-x-3">
             <Phone size={16} className="flex-shrink-0" />

@@ -10,6 +10,10 @@
       "destination": "/sitemap.xml"
     },
     {
+      "source": "/bundang-interior",
+      "destination": "/bundang-interior.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
