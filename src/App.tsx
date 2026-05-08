@@ -6,6 +6,7 @@ import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Booking from './pages/Booking';
 import Admin from './pages/Admin';
+import BundangInterior from './pages/BundangInterior';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/bundang-interior" element={<BundangInterior />} />
         </Routes>
       </Layout>
     </Router>

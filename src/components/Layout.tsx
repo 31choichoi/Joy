@@ -17,6 +17,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
+    { name: '분당인테리어', path: '/bundang-interior' },
     { name: 'About', path: '/about' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Booking', path: '/booking' },
@@ -45,7 +46,7 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-12">
-          {navItems.map((item) => (
+           {navItems.map((item) => (
             item.isExternal ? (
               <a
                 key={item.path}
@@ -172,6 +173,7 @@ const Footer = () => (
       <div>
         <h4 className="text-xs uppercase tracking-widest font-bold text-white mb-6">Quick Links</h4>
         <ul className="space-y-4 text-sm font-light text-white/50">
+          <li><Link to="/bundang-interior" className="hover:text-brand-gold transition-colors">분당인테리어</Link></li>
           <li><Link to="/about" className="hover:text-brand-gold transition-colors">About MID인테리어</Link></li>
           <li><Link to="/portfolio" className="hover:text-brand-gold transition-colors">Portfolio</Link></li>
           <li><a href="https://blog.naver.com/mid_designstudio" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">Blog (Naver)</a></li>
