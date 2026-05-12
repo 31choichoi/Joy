@@ -33,21 +33,21 @@ const Navbar = () => {
       scrolled ? "bg-white/90 backdrop-blur-md py-3 shadow-sm" : "bg-transparent py-6"
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link to="/" className="flex items-baseline gap-3">
+        <Link to="/" className="flex items-center gap-2 md:gap-3 whitespace-nowrap">
           <span className={cn(
-            "text-3xl md:text-4xl font-serif font-bold tracking-tighter transition-colors",
+            "text-2xl md:text-4xl font-serif font-bold tracking-tighter transition-colors",
             isNavDark ? "text-slate-900" : "text-white"
           )}>
-            MID<span className="text-xl md:text-4xl ml-1">인테리어</span>
+            MID<span className="text-lg md:text-3xl ml-1">인테리어</span>
           </span>
           <span className={cn(
-            "hidden sm:inline-block text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold transition-colors",
-            isNavDark ? "text-slate-500" : "text-white/70"
+            "hidden lg:inline-block text-[10px] md:text-xs uppercase tracking-[0.3em] font-semibold transition-colors border-l pl-3 ml-2",
+            isNavDark ? "text-slate-400 border-slate-200" : "text-white/40 border-white/20"
           )}>Interior Design</span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-12">
+        <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
            {navItems.map((item) => (
             item.isExternal ? (
               <a
