@@ -4,4 +4,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://mid-designstudio.com/sitemap.xml
+Sitemap: https://mid-sooty.vercel.app/sitemap.xml
