@@ -17,6 +17,8 @@ const Admin = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
   const [view, setView] = useState<ViewType>('list');
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [editingPost, setEditingPost] = useState<Partial<Post> | null>(null);
@@ -26,9 +28,14 @@ const Admin = () => {
 
   useEffect(() => {
     const unsubAuth = onAuthStateChanged(auth, (u) => {
+      console.log("Auth state changed:", u?.email);
       setUser(u);
       if (u && u.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
         setIsAdmin(true);
+        setAuthError(null);
+      } else if (u) {
+        setIsAdmin(false);
+        setAuthError(`Email ${u.email} is not authorized as admin.`);
       } else {
         setIsAdmin(false);
       }
@@ -59,12 +66,28 @@ const Admin = () => {
   }, [isAdmin]);
 
   const handleLogin = async () => {
+    setLoginLoading(true);
+    setAuthError(null);
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
     try {
-      await signInWithPopup(auth, provider);
-    } catch (err) {
-      console.error(err);
+      // Force local persistence for iframe environments
+      const { setPersistence, browserLocalPersistence } = await import('firebase/auth');
+      await setPersistence(auth, browserLocalPersistence);
+      
+      const result = await signInWithPopup(auth, provider);
+      console.log("Login success:", result.user.email);
+    } catch (err: any) {
+      console.error("Login Error Details:", err);
+      if (err.code === 'auth/popup-blocked') {
+        setAuthError("Popup was blocked by your browser. Please allow popups for this site.");
+      } else if (err.code === 'auth/unauthorized-domain') {
+        setAuthError("This domain is not authorized for Firebase Auth. Please check Firebase Console Settings.");
+      } else {
+        setAuthError(err.message || "An unexpected error occurred during login.");
+      }
+    } finally {
+      setLoginLoading(false);
     }
   };
 
@@ -163,17 +186,28 @@ const Admin = () => {
           </div>
           <h2 className="text-2xl font-bold mb-6">Restricted Access</h2>
           <p className="text-slate-500 mb-8 font-light">Please sign in with your authorized Google account to access the dashboard.</p>
-          {!user ? (
-            <button 
-              onClick={handleLogin}
-              className="w-full py-4 bg-slate-900 text-white rounded-xl font-bold flex items-center justify-center space-x-3 hover:bg-slate-800 transition-all"
-            >
-              <LogIn size={20} />
-              <span>Login with Google</span>
-            </button>
-          ) : (
-            <div className="text-red-500 text-sm mb-4">Unauthorized email: {user.email}</div>
+          
+          {authError && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl text-red-600 text-xs font-semibold">
+              {authError}
+            </div>
           )}
+
+          <button 
+            onClick={handleLogin}
+            disabled={loginLoading}
+            className={cn(
+              "w-full py-4 bg-slate-900 text-white rounded-xl font-bold flex items-center justify-center space-x-3 transition-all",
+              loginLoading ? "opacity-70 cursor-not-allowed" : "hover:bg-slate-800"
+            )}
+          >
+            {loginLoading ? (
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            ) : (
+              <LogIn size={20} />
+            )}
+            <span>{loginLoading ? 'Connecting...' : 'Login with Google'}</span>
+          </button>
         </div>
       </div>
     );
