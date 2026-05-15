@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { auth, db } from '../lib/firebase';
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, User } from 'firebase/auth';
-import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc, addDoc, serverTimestamp } from 'firebase/firestore';
+import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged, User, setPersistence, browserLocalPersistence } from 'firebase/auth';
+import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
 import { Booking, BookingStatus, Post } from '../types';
-import { LogIn, LogOut, Download, PieChart as PieIcon, List, CheckCircle, Clock as ClockIcon, TrendingUp, MapPin, FileText, Plus, X, Save, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import { LogIn, LogOut, Download, PieChart as PieIcon, List, CheckCircle, Clock as ClockIcon, TrendingUp, MapPin, FileText, Plus, X, Save, Edit, Trash2, Eye, EyeOff, AlertCircle, ExternalLink } from 'lucide-react';
 import { format } from 'date-fns';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { cn } from '../lib/utils';
@@ -27,6 +27,24 @@ const Admin = () => {
   const ADMIN_EMAIL = '31choichoi@gmail.com'; 
 
   useEffect(() => {
+    // Handle redirect result
+    const checkRedirect = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result?.user) {
+          console.log("Redirect login success:", result.user.email);
+        }
+      } catch (err: any) {
+        console.error("Redirect Error:", err);
+        if (err.code === 'auth/unauthorized-domain') {
+          setAuthError(`현재 도메인이 Firebase에 등록되지 않았습니다. [${window.location.hostname}]를 Firebase 콘솔에 추가해주세요.`);
+        } else {
+          setAuthError(err.message);
+        }
+      }
+    };
+    checkRedirect();
+
     const unsubAuth = onAuthStateChanged(auth, (u) => {
       console.log("Auth state changed:", u?.email);
       setUser(u);
@@ -35,7 +53,7 @@ const Admin = () => {
         setAuthError(null);
       } else if (u) {
         setIsAdmin(false);
-        setAuthError(`Email ${u.email} is not authorized as admin.`);
+        setAuthError(`이메일 ${u.email}은 관리자 권한이 없습니다.`);
       } else {
         setIsAdmin(false);
       }
@@ -71,22 +89,11 @@ const Admin = () => {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
     try {
-      // Force local persistence for iframe environments
-      const { setPersistence, browserLocalPersistence } = await import('firebase/auth');
       await setPersistence(auth, browserLocalPersistence);
-      
-      const result = await signInWithPopup(auth, provider);
-      console.log("Login success:", result.user.email);
+      await signInWithRedirect(auth, provider);
     } catch (err: any) {
-      console.error("Login Error Details:", err);
-      if (err.code === 'auth/popup-blocked') {
-        setAuthError("Popup was blocked by your browser. Please allow popups for this site.");
-      } else if (err.code === 'auth/unauthorized-domain') {
-        setAuthError("This domain is not authorized for Firebase Auth. Please check Firebase Console Settings.");
-      } else {
-        setAuthError(err.message || "An unexpected error occurred during login.");
-      }
-    } finally {
+      console.error("Login Error:", err);
+      setAuthError(err.message);
       setLoginLoading(false);
     }
   };
@@ -188,8 +195,27 @@ const Admin = () => {
           <p className="text-slate-500 mb-8 font-light">Please sign in with your authorized Google account to access the dashboard.</p>
           
           {authError && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl text-red-600 text-xs font-semibold">
-              {authError}
+            <div className="mb-6 p-5 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-[11px] leading-relaxed">
+              <div className="flex items-center gap-2 mb-2 font-bold uppercase tracking-widest">
+                <AlertCircle size={14} /> <span>Auth Connection Issue</span>
+              </div>
+              <p className="mb-3">{authError}</p>
+              {authError.includes('도메인') && (
+                <div className="space-y-3">
+                  <div className="p-3 bg-white rounded-lg border border-red-100 font-mono break-all select-all">
+                    {window.location.hostname}
+                  </div>
+                  <a 
+                    href="https://console.firebase.google.com/project/_/authentication/settings" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-red-700 font-black hover:underline"
+                  >
+                    Firebase Console 이동 <ExternalLink size={12} />
+                  </a>
+                  <p className="text-slate-500 font-medium">관리자님, 위 도메인을 Firebase '승인된 도메인' 목록에 추가해 주세요.</p>
+                </div>
+              )}
             </div>
           )}
 
