@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { auth, db } from '../lib/firebase';
-import { GoogleAuthProvider, signInWithRedirect, signOut, onAuthStateChanged, User, getRedirectResult } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, User } from 'firebase/auth';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc, addDoc, serverTimestamp } from 'firebase/firestore';
 import { Booking, BookingStatus, Post } from '../types';
 import { LogIn, LogOut, Download, PieChart as PieIcon, List, CheckCircle, Clock as ClockIcon, TrendingUp, MapPin, FileText, Plus, X, Save, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
@@ -25,13 +25,9 @@ const Admin = () => {
   const ADMIN_EMAIL = '31choichoi@gmail.com'; 
 
   useEffect(() => {
-    getRedirectResult(auth).catch((error) => {
-      console.error("Auth redirect error:", error);
-    });
-
     const unsubAuth = onAuthStateChanged(auth, (u) => {
       setUser(u);
-      if (u && u.email === ADMIN_EMAIL) {
+      if (u && u.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
         setIsAdmin(true);
       } else {
         setIsAdmin(false);
@@ -66,7 +62,7 @@ const Admin = () => {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
     try {
-      await signInWithRedirect(auth, provider);
+      await signInWithPopup(auth, provider);
     } catch (err) {
       console.error(err);
     }
