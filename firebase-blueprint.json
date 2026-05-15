@@ -1,6 +1,3 @@
-/**
- * Defines the structure of the FirebaseBlueprint configuration.
- */
 {
   "entities": {
     "booking": {
@@ -26,6 +23,24 @@
       },
       "required": ["clientName", "contact", "date", "time", "status"]
     },
+    "post": {
+      "title": "Blog Post",
+      "description": "A blog article.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "excerpt": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "authorId": { "type": "string" },
+        "published": { "type": "boolean" },
+        "tags": { "type": "array" },
+        "category": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "content", "published", "createdAt", "updatedAt"]
+    },
     "admin": {
       "title": "Admin User",
       "description": "A user with administrative access to the dashboard.",
@@ -41,6 +56,10 @@
     "/bookings/{bookingId}": {
       "schema": "booking",
       "description": "Collection of all consultation requests."
+    },
+    "/posts/{postId}": {
+      "schema": "post",
+      "description": "Collection of blog posts."
     },
     "/admins/{adminId}": {
       "schema": "admin",

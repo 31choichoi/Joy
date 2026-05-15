@@ -30,7 +30,6 @@ service cloud.firestore {
       return resource.data;
     }
 
-    // Booking Validation
     function isBookingValid(data) {
       return data.clientName is string && data.clientName.size() <= 100 &&
              data.contact is string && data.contact.size() <= 50 &&
@@ -38,6 +37,14 @@ service cloud.firestore {
              data.time is string && data.time.size() <= 10 &&
              data.status in ['pending', 'confirmed', 'completed', 'contract_in_progress'] &&
              (data.get('details', '') is string && data.get('details', '').size() <= 5000);
+    }
+
+    function isPostValid(data) {
+      return data.title is string && data.title.size() <= 200 &&
+             data.content is string && data.content.size() <= 50000 &&
+             data.published is bool &&
+             data.category is string && data.category.size() <= 50 &&
+             (data.get('thumbnailUrl', '') is string && data.get('thumbnailUrl', '').size() <= 1000);
     }
 
     match /bookings/{bookingId} {
@@ -50,9 +57,17 @@ service cloud.firestore {
       allow update: if isAdmin() && isBookingValid(incoming());
     }
 
+    match /posts/{postId} {
+      allow list: if (resource.data.published == true) || isAdmin();
+      allow get: if (resource.data.published == true) || isAdmin();
+      allow create: if isAdmin() && isPostValid(incoming());
+      allow update: if isAdmin() && isPostValid(incoming());
+      allow delete: if isAdmin();
+    }
+
     match /admins/{adminId} {
       allow read: if isSignedIn();
-      allow write: if false; // Only manageable via console
+      allow write: if false; 
     }
     
     match /test/connection {

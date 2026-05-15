@@ -27,7 +27,16 @@ export interface Project {
   isTeumsae?: boolean;
 }
 
-export interface AdminUser {
-  email: string;
-  role: 'admin';
+export interface Post {
+  id?: string;
+  title: string;
+  content: string;
+  excerpt: string;
+  thumbnailUrl: string;
+  authorId: string;
+  published: boolean;
+  tags: string[];
+  category: string;
+  createdAt: string; // ISO string
+  updatedAt: string; // ISO string
 }

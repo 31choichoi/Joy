@@ -20,8 +20,9 @@ const Navbar = () => {
     { name: '분당인테리어', path: '/bundang-interior' },
     { name: 'About', path: '/about' },
     { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Booking', path: '/booking' },
-    { name: 'Blog', path: 'https://blog.naver.com/mid_designstudio', isExternal: true },
+    { name: 'Naver', path: 'https://blog.naver.com/mid_designstudio', isExternal: true },
   ];
 
   const isHome = location.pathname === '/';
@@ -178,7 +179,8 @@ const Footer = () => (
           <li><Link to="/bundang-interior" className="hover:text-brand-gold transition-colors">분당인테리어</Link></li>
           <li><Link to="/about" className="hover:text-brand-gold transition-colors">About MID인테리어</Link></li>
           <li><Link to="/portfolio" className="hover:text-brand-gold transition-colors">Portfolio</Link></li>
-          <li><a href="https://blog.naver.com/mid_designstudio" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">Blog (Naver)</a></li>
+          <li><Link to="/blog" className="hover:text-brand-gold transition-colors">Blog (Official)</Link></li>
+          <li><a href="https://blog.naver.com/mid_designstudio" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">Naver Blog</a></li>
           <li><Link to="/booking" className="hover:text-brand-gold transition-colors">Consultation</Link></li>
           <li><Link to="/admin" className="hover:text-brand-gold transition-colors">Dashboard</Link></li>
         </ul>
