@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { db } from '../lib/firebase';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
 import { Post } from '../types';
 import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
 import { format } from 'date-fns';
+
+const SEO_KEYWORDS = `${Array(40).fill('분당').join(' ')} ${Array(50).fill('인테리어').join(' ')} ${Array(10).fill('분당인테리어').join(' ')}`;
 
 const Blog = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -37,6 +40,11 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>분당인테리어 | MID Journal</title>
+        <meta name="keywords" content={`분당인테리어, 판교인테리어, 성남인테리어, ${SEO_KEYWORDS}`} />
+        <meta name="description" content="엠아이디인테리어의 시공 철학, 트렌드 분석, 공간을 대하는 우리의 깊이 있는 이야기" />
+      </Helmet>
       {/* Hero Section */}
       <section className="pt-40 pb-20 px-6 md:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto text-center">
@@ -61,7 +69,7 @@ const Blog = () => {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto text-slate-500 font-light leading-relaxed"
           >
-            미드인테리어의 시공 철학, 트렌드 분석, 그리고 공간을 대하는 우리의 깊이 있는 이야기를 전합니다.
+            엠아이디인테리어의 시공 철학, 트렌드 분석, 공간을 대하는 우리의 깊이 있는 이야기
           </motion.p>
         </div>
       </section>

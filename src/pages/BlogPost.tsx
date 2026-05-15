@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { db } from '../lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { Post } from '../types';
@@ -8,6 +9,8 @@ import { Calendar, User, ArrowLeft, Tag, Share2, Facebook, MessageCircle } from 
 import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+
+const SEO_KEYWORDS = `${Array(40).fill('분당').join(' ')} ${Array(50).fill('인테리어').join(' ')} ${Array(10).fill('분당인테리어').join(' ')}`;
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
@@ -42,6 +45,14 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>{post.title} | 분당인테리어 MID인테리어</title>
+        <meta name="keywords" content={`${post.tags.join(', ')}, ${SEO_KEYWORDS}`} />
+        <meta name="description" content={post.excerpt} />
+        <meta property="og:title" content={`${post.title} | MID인테리어`} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content={post.thumbnailUrl} />
+      </Helmet>
       {/* Article Header */}
       <header className="relative w-full h-[60vh] md:h-[70vh] bg-slate-900 overflow-hidden">
         {post.thumbnailUrl ? (

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -22,21 +23,23 @@ const ScrollToTop = () => {
 
 export default function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/bundang-interior" element={<BundangInterior />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/bundang-interior" element={<BundangInterior />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </HelmetProvider>
   );
 }
 
